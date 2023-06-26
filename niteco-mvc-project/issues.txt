@@ -1,0 +1,1 @@
+﻿1. Entity framework only works with .NET Framework (Current .NET Core)
