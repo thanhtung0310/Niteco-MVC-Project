@@ -1,0 +1,2 @@
+DB with basic tables with related columns
+1. Missing Restrict Delete on all tables
