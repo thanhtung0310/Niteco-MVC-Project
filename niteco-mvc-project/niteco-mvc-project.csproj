@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>niteco_mvc_project</RootNamespace>
+    <UserSecretsId>e4b7d29a-5253-4076-90e3-f6880a72448f</UserSecretsId>
+  </PropertyGroup>
+
+</Project>
