@@ -63,6 +63,7 @@
                     <Property Name="password_hash" Type="varbinary(max)" Nullable="false" />
                     <Property Name="password_salt" Type="varbinary(max)" Nullable="false" />
                     <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+                    <Property Name="is_super_admin" Type="bit" Nullable="true" />
                 </EntityType>
                 <Association Name="FK_order_customer_id">
                     <End Role="customer" Type="Self.customer" Multiplicity="1">
@@ -194,6 +195,7 @@
                     <Property Name="password_hash" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
                     <Property Name="password_salt" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
                     <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+                    <Property Name="is_super_admin" Type="Boolean" Nullable="true" />
                 </EntityType>
                 <Association Name="FK_product_category_id">
                     <End Role="category" Type="Self.category" Multiplicity="1">
@@ -321,6 +323,7 @@
                                 <ScalarProperty Name="password_hash" ColumnName="password_hash" />
                                 <ScalarProperty Name="password_salt" ColumnName="password_salt" />
                                 <ScalarProperty Name="name" ColumnName="name" />
+                                <ScalarProperty Name="is_super_admin" ColumnName="is_super_admin" />
                             </MappingFragment>
                         </EntityTypeMapping>
                     </EntitySetMapping>

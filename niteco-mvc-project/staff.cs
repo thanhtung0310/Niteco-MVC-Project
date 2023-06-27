@@ -11,7 +11,7 @@ namespace niteco_mvc_project
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class staff
     {
         public System.Guid id { get; set; }
@@ -19,5 +19,6 @@ namespace niteco_mvc_project
         public byte[] password_hash { get; set; }
         public byte[] password_salt { get; set; }
         public string name { get; set; }
+        public bool? is_super_admin { get; set; }
     }
 }
