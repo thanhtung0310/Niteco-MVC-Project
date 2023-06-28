@@ -135,6 +135,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\categoriesController.cs" />
     <Compile Include="Controllers\customersController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ordersController.cs" />
     <Compile Include="Controllers\productsController.cs" />
@@ -266,6 +267,10 @@
     <Content Include="Views\staffs\Details.cshtml" />
     <Content Include="Views\staffs\Edit.cshtml" />
     <Content Include="Views\staffs\Index.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Shared\_ViewImports.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

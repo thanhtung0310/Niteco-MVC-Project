@@ -38,6 +38,18 @@ namespace niteco_mvc_project.Controllers
             return View();
         }
 
+        public ActionResult Error()
+        {
+            ViewBag.Message = "Don't have permisison error page.";
+
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         public ActionResult CreateOrder()
         {
             return RedirectToRoute("Orders/Create");

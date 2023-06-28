@@ -1,0 +1,15 @@
+﻿@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers*@
+@{
+    ViewData["Title"] = "Permissions blocked";
+}
+
+<h1 class="text-danger">Error!</h1>
+<h3 class="text-danger">An error occurred while processing your request.</h3>
+
+<h4>Error result</h4>
+<p>
+    You do not have the permission to access this url!
+</p>
+<h4 class="text-center">
+    Please <a asp-controller="Home" asp-action="Login" style="color: lightgray;">log in</a> to continue!
+</h4>

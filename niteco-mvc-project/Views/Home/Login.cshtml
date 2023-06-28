@@ -1,0 +1,55 @@
+﻿@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers*@
+@{
+    ViewData["Title"] = "Log in Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="~/css/login-style.css" rel="stylesheet" />
+    <script>
+        var working = false;
+        $('.login').on('submit', function (e) {
+            e.preventDefault();
+            if (working) return;
+            working = true;
+            var $this = $(this),
+                $state = $this.find('button > .state');
+            $this.addClass('loading');
+            $state.html('Authenticating');
+            setTimeout(function () {
+                $this.addClass('ok');
+                $state.html('Welcome back!');
+                setTimeout(function () {
+                    $state.html('Log in');
+                    $this.removeClass('ok loading');
+                    working = false;
+                }, 4000);
+            }, 3000);
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <form class="login" asp-controller="Home" asp-action="Login" method="post">
+            <p class="title">Log in</p>
+            <h3 style="color:red;">@ViewBag.Message</h3>
+
+            <input type="text" name="acc_username" placeholder="Username" autofocus required />
+
+            <input type="password" name="acc_password" placeholder="Password" required />
+
+            <a href="mailto:thanhtung031099@gmail.com?subject=Reset Password&body=I forgot my password. My account is {account_name}. Please reset it for me. Thanks!">
+                Forgot your password?
+            </a>
+
+            <button type="submit">
+                <i class="spinner"></i>
+                <span class="state">Log in</span>
+            </button>
+        </form>
+    </div>
+</body>
+</html>
