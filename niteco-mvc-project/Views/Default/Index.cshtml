@@ -1,58 +1,88 @@
-﻿@model IEnumerable<niteco_mvc_project.Models.OrderListModel>
+﻿@model niteco_mvc_project.Models.OrderListResponse
 
 @{
     ViewBag.Title = "Main function page";
 }
 
-<div class="flex-column">
-    <label>Enter category to search</label>
-    <form id="search-category">
-        <input class="input-group-text" placeholder="prod1" />
-        <button class="btn-primary" formaction="submit">Search</button>
-    </form>
-</div>
+@using (Html.BeginForm("Index", "Default", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("searchString", Model.SearchString, new { placeholder = "Search by Product Name" })
+        <input type="submit" value="Search" />
+    </p>
+}
 
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model => model.ProductName)</th>
-
-        <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
-
-        <th>@Html.DisplayNameFor(model => model.CustomerName)</th>
-
-        <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
-
-        <th>@Html.DisplayNameFor(model => model.Amount)</th>
+        <th>Product Name</th>
+        <th>Category Name</th>
+        <th>Customer Name</th>
+        <th>Order Date</th>
+        <th>Amount</th>
     </tr>
-    @if (Model != null & Model.Any() && Model.Count() > 0)
+    @if (Model.TotalCount > 0)
     {
-        foreach (var item in Model)
+        foreach (var item in Model.Orders)
         {
             <tr>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryName</td>
+                <td>@item.CustomerName</td>
+                <td>@item.OrderDate</td>
+                <td>@item.Amount</td>
                 <td>
-                    @Html.DisplayFor(itemModel => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(itemModel => item.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(itemModel => item.CustomerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(itemModel => item.OrderDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(itemModel => item.Amount)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    @Html.ActionLink("Edit", "Orders/Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Orders/Details", new { id = item.Id })
                 </td>
             </tr>
         }
 
     }
+    else
+    {
+        <tr>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>
+                Edit |
+                Details
+            </td>
+        </tr>
+    }
 </table>
+
+@if (Model.TotalPages > 1)
+{
+    <div class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <a href="@Url.Action("Index", new { PageNumber = 1, PageSize = Model.PageSize, FullTextSearch = Model.SearchString })">First</a>
+            <a href="@Url.Action("Index", new { PageNumber = Model.CurrentPage - 1, PageSize = Model.PageSize, FullTextSearch = Model.SearchString })">Previous</a>
+        }
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            if (i == Model.CurrentPage)
+            {
+                <span>@i</span>
+            }
+            else
+            {
+                <a href="@Url.Action("Index", new { PageNumber = i, PageSize = Model.PageSize, FullTextSearch = Model.SearchString })">@i</a>
+            }
+        }
+
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <a href="@Url.Action("Index", new { PageNumber = Model.CurrentPage + 1, PageSize = Model.PageSize, FullTextSearch = Model.SearchString })">Next</a>
+            <a href="@Url.Action("Index", new { PageNumber = Model.TotalPages, PageSize = Model.PageSize, FullTextSearch = Model.SearchString })">Last</a>
+        }
+    </div>
+}
+
 <p>
     @Html.ActionLink("Create new order", "CreateOrder")
 </p>

@@ -11,7 +11,7 @@ using niteco_mvc_project;
 
 namespace niteco_mvc_project.Controllers
 {
-    public class customersController : Controller
+    public class customersController : BaseController
     {
         private niteco_test_dbEntities db = new niteco_test_dbEntities();
 
