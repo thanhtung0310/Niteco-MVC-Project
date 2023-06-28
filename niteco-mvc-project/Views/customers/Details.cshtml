@@ -1,0 +1,66 @@
+﻿@model niteco_mvc_project.customer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>customer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.created)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.created)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.modified)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.modified)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.is_active)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.is_active)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

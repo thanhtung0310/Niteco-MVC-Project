@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "niteco-mvc-project", "niteco-mvc-project\niteco-mvc-project.csproj", "{016BE309-3079-4CB5-9EF0-ED9F02B373D4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{6AB5F9DE-CEF9-45A4-90BC-BDB0457209A1}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\niteco_db_script.sql = scripts\niteco_db_script.sql
+		scripts\note.txt = scripts\note.txt
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "unit-test", "unit-test\unit-test.csproj", "{4A7DCD74-406F-4A0E-AFDD-6026DF1E73D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "niteco-mvc-project", "niteco-mvc-project\niteco-mvc-project.csproj", "{513BF4CE-1C5B-44BB-BFAB-2DBED76C4583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "niteco-mvc-project.Tests", "niteco-mvc-project.Tests\niteco-mvc-project.Tests.csproj", "{E56C6C2E-6F23-402C-9C80-EEDC1C7A4DED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +19,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{016BE309-3079-4CB5-9EF0-ED9F02B373D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{016BE309-3079-4CB5-9EF0-ED9F02B373D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{016BE309-3079-4CB5-9EF0-ED9F02B373D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{016BE309-3079-4CB5-9EF0-ED9F02B373D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A7DCD74-406F-4A0E-AFDD-6026DF1E73D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A7DCD74-406F-4A0E-AFDD-6026DF1E73D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A7DCD74-406F-4A0E-AFDD-6026DF1E73D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A7DCD74-406F-4A0E-AFDD-6026DF1E73D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513BF4CE-1C5B-44BB-BFAB-2DBED76C4583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513BF4CE-1C5B-44BB-BFAB-2DBED76C4583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513BF4CE-1C5B-44BB-BFAB-2DBED76C4583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513BF4CE-1C5B-44BB-BFAB-2DBED76C4583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E56C6C2E-6F23-402C-9C80-EEDC1C7A4DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E56C6C2E-6F23-402C-9C80-EEDC1C7A4DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E56C6C2E-6F23-402C-9C80-EEDC1C7A4DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E56C6C2E-6F23-402C-9C80-EEDC1C7A4DED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

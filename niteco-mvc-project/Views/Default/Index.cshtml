@@ -1,0 +1,58 @@
+﻿@model IEnumerable<niteco_mvc_project.Models.OrderListModel>
+
+@{
+    ViewBag.Title = "Main function page";
+}
+
+<div class="flex-column">
+    <label>Enter category to search</label>
+    <form id="search-category">
+        <input class="input-group-text" placeholder="prod1" />
+        <button class="btn-primary" formaction="submit">Search</button>
+    </form>
+</div>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+
+        <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
+
+        <th>@Html.DisplayNameFor(model => model.CustomerName)</th>
+
+        <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
+
+        <th>@Html.DisplayNameFor(model => model.Amount)</th>
+    </tr>
+    @if (Model != null & Model.Any() && Model.Count() > 0)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(itemModel => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(itemModel => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(itemModel => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(itemModel => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(itemModel => item.Amount)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    }
+</table>
+<p>
+    @Html.ActionLink("Create new order", "CreateOrder")
+</p>
