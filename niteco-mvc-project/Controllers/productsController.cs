@@ -11,110 +11,115 @@ using niteco_mvc_project;
 
 namespace niteco_mvc_project.Controllers
 {
-    public class categoriesController : BaseController
+    public class productsController : BaseController
     {
         private niteco_test_dbEntities db = new niteco_test_dbEntities();
 
-        // GET: categories
+        // GET: products
         public async Task<ActionResult> Index()
         {
-            return View(await db.categories.ToListAsync());
+            var products = db.products.Include(p => p.category);
+            return View(await products.ToListAsync());
         }
 
-        // GET: categories/Details/5
+        // GET: products/Details/5
         public async Task<ActionResult> Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = await db.categories.FindAsync(id);
-            if (category == null)
+            product product = await db.products.FindAsync(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // GET: categories/Create
+        // GET: products/Create
         public ActionResult Create()
         {
+            ViewBag.category_id = new SelectList(db.categories, "id", "name");
             return View();
         }
 
-        // POST: categories/Create
+        // POST: products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,name,description")] category category)
+        public async Task<ActionResult> Create([Bind(Include = "id,name,category_id,price,description,quantity")] product product)
         {
             if (ModelState.IsValid)
             {
-                category.id = Guid.NewGuid();
-                category.created = category.modified = DateTime.UtcNow;
-                db.categories.Add(category);
+                product.id = Guid.NewGuid();
+                product.created = product.modified = DateTime.UtcNow;
+                db.products.Add(product);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            ViewBag.category_id = new SelectList(db.categories, "id", "name", product.category_id);
+            return View(product);
         }
 
-        // GET: categories/Edit/5
+        // GET: products/Edit/5
         public async Task<ActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = await db.categories.FindAsync(id);
-            if (category == null)
+            product product = await db.products.FindAsync(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            ViewBag.category_id = new SelectList(db.categories, "id", "name", product.category_id);
+            return View(product);
         }
 
-        // POST: categories/Edit/5
+        // POST: products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,name,description")] category category)
+        public async Task<ActionResult> Edit([Bind(Include = "id,name,category_id,price,description,quantity,created,modified")] product product)
         {
             if (ModelState.IsValid)
             {
-                category.modified = DateTime.UtcNow;
-                db.Entry(category).State = EntityState.Modified;
+                product.modified = DateTime.UtcNow;
+                db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            ViewBag.category_id = new SelectList(db.categories, "id", "name", product.category_id);
+            return View(product);
         }
 
-        // GET: categories/Delete/5
+        // GET: products/Delete/5
         public async Task<ActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = await db.categories.FindAsync(id);
-            if (category == null)
+            product product = await db.products.FindAsync(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // POST: categories/Delete/5
+        // POST: products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            category category = await db.categories.FindAsync(id);
-            db.categories.Remove(category);
+            product product = await db.products.FindAsync(id);
+            db.products.Remove(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

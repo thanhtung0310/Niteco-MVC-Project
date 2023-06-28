@@ -11,110 +11,108 @@ using niteco_mvc_project;
 
 namespace niteco_mvc_project.Controllers
 {
-    public class categoriesController : BaseController
+    public class staffsController : BaseController
     {
         private niteco_test_dbEntities db = new niteco_test_dbEntities();
 
-        // GET: categories
+        // GET: staffs
         public async Task<ActionResult> Index()
         {
-            return View(await db.categories.ToListAsync());
+            return View(await db.staffs.ToListAsync());
         }
 
-        // GET: categories/Details/5
+        // GET: staffs/Details/5
         public async Task<ActionResult> Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = await db.categories.FindAsync(id);
-            if (category == null)
+            staff staff = await db.staffs.FindAsync(id);
+            if (staff == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(staff);
         }
 
-        // GET: categories/Create
+        // GET: staffs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: categories/Create
+        // POST: staffs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,name,description")] category category)
+        public async Task<ActionResult> Create([Bind(Include = "id,user_name,password_hash,password_salt,name,is_super_admin")] staff staff)
         {
             if (ModelState.IsValid)
             {
-                category.id = Guid.NewGuid();
-                category.created = category.modified = DateTime.UtcNow;
-                db.categories.Add(category);
+                staff.id = Guid.NewGuid();
+                db.staffs.Add(staff);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(staff);
         }
 
-        // GET: categories/Edit/5
+        // GET: staffs/Edit/5
         public async Task<ActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = await db.categories.FindAsync(id);
-            if (category == null)
+            staff staff = await db.staffs.FindAsync(id);
+            if (staff == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(staff);
         }
 
-        // POST: categories/Edit/5
+        // POST: staffs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,name,description")] category category)
+        public async Task<ActionResult> Edit([Bind(Include = "id,user_name,password_hash,password_salt,name,is_super_admin")] staff staff)
         {
             if (ModelState.IsValid)
             {
-                category.modified = DateTime.UtcNow;
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(staff).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            return View(staff);
         }
 
-        // GET: categories/Delete/5
+        // GET: staffs/Delete/5
         public async Task<ActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = await db.categories.FindAsync(id);
-            if (category == null)
+            staff staff = await db.staffs.FindAsync(id);
+            if (staff == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(staff);
         }
 
-        // POST: categories/Delete/5
+        // POST: staffs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            category category = await db.categories.FindAsync(id);
-            db.categories.Remove(category);
+            staff staff = await db.staffs.FindAsync(id);
+            db.staffs.Remove(staff);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
