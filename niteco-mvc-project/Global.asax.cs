@@ -17,5 +17,11 @@ namespace niteco_mvc_project
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-    }
+
+		protected void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory fac)
+		{
+            // implement middlewares
+            app.UseMiddleware<ErrorLoggingMiddleware>();
+        }
+	}
 }
