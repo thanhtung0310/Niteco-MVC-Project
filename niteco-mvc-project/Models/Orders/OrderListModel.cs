@@ -5,6 +5,7 @@ namespace niteco_mvc_project.Models
     public class OrderListModel
     {
         public Guid Id { get; set; }
+
         public string ProductName { get; set; }
 
         public string CategoryName { get; set; }

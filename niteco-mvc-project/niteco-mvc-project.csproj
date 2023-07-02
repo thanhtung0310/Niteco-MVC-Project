@@ -146,8 +146,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\OrderListModel.cs" />
-    <Compile Include="Models\OrderListModelRequest.cs" />
     <Compile Include="NitecoDbContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -173,6 +171,15 @@
     <Compile Include="staff.cs">
       <DependentUpon>NitecoDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="GlobaUsing.cs" />
+    <Compile Include="Models\Orders\OrderListModel.cs" />
+    <Compile Include="Models\Orders\OrderListModelRequest.cs" />
+    <Compile Include="Models\Auth\UserSessionDetailModel.cs" />
+    <Compile Include="Models\Auth\LoginRequest.cs" />
+    <Compile Include="Models\Staffs\StaffDetailModel.cs" />
+    <Compile Include="Helpers\HMACHelper.cs" />
+    <Compile Include="Attributes\SessionAuthorizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -275,6 +282,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Models\Orders\" />
+    <Folder Include="Models\Auth\" />
+    <Folder Include="Models\Staffs\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Attributes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -333,6 +345,11 @@
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

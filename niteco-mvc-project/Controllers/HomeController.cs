@@ -1,67 +1,58 @@
-﻿using niteco_mvc_project.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿namespace niteco_mvc_project.Controllers;
 
-namespace niteco_mvc_project.Controllers
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    public ActionResult Index()
     {
-        public ActionResult Index()
+        var tempOrder = new OrderListModel
         {
-            var tempOrder = new OrderListModel
-            {
-                ProductName = "prod1",
-                CategoryName = "Cat1",
-                CustomerName = "Mr Tran",
-                OrderDate = DateTime.UtcNow,
-                Amount = 100
-            };
+            ProductName = "prod1",
+            CategoryName = "Cat1",
+            CustomerName = "Mr Tran",
+            OrderDate = DateTime.UtcNow,
+            Amount = 100
+        };
 
-            return View(new List<OrderListModel> { tempOrder });
-        }
+        return View(new List<OrderListModel> { tempOrder });
+    }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+    public ActionResult About()
+    {
+        ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+        return View();
+    }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+    public ActionResult Contact()
+    {
+        ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+        return View();
+    }
 
-        public ActionResult Error()
-        {
-            ViewBag.Message = "Don't have permisison error page.";
+    public ActionResult Error()
+    {
+        ViewBag.Message = "Don't have permisison error page.";
 
-            return View();
-        }
+        return View();
+    }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
+    public ActionResult Login()
+    {
+        return View();
+    }
 
-        public ActionResult CreateOrder()
-        {
-            return RedirectToRoute("Orders/Create");
-        }
+    public ActionResult CreateOrder()
+    {
+        return RedirectToRoute("Orders/Create");
+    }
 
-        public async Task<IEnumerable<OrderListModel>> GetOrderListByRequestAsync(OrderListModelRequest request)
-        {
-            var searchString = request.FullTextSearch;
-            var pageNumber = request.PageNumber;
-            var pageSize = request.PageSize;
+    public async Task<IEnumerable<OrderListModel>> GetOrderListByRequestAsync(OrderListModelRequest request)
+    {
+        var searchString = request.FullTextSearch;
+        var pageNumber = request.PageNumber;
+        var pageSize = request.PageSize;
 
-            return new List<OrderListModel>();
-        }
+        return new List<OrderListModel>();
     }
 }
