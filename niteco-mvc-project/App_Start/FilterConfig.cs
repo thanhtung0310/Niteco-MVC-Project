@@ -1,7 +1,4 @@
-﻿using System.Web;
-using System.Web.Mvc;
-
-namespace niteco_mvc_project
+﻿namespace niteco_mvc_project
 {
     public class FilterConfig
     {
