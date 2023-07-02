@@ -22,3 +22,4 @@
 - Done refactoring code + test code structure to work at 9:00 AM on 28th June, 2023. > Total: 30mins + 1hour = 1hour30mins
 - Update code with BaseController (Authorize) + ErrorPage (return if cannot get accessed to Controllers). > Total: 1hour30mins + 20mins = 1hour50mins
 - Implement Authorization/Auuthentication for SessionController (need better self test) from 3:00 PM to 3:40PM on 2nd July, 2023. > Total: 1h50m + 40m = 2h40m
+- Update code to handle error exception (middleware) for request. > Total += 20m
