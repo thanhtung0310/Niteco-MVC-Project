@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Controllers\DefaultControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\niteco-mvc-project\niteco-mvc-project.csproj">
