@@ -20,5 +20,8 @@ namespace niteco_mvc_project
         public byte[] password_salt { get; set; }
         public string name { get; set; }
         public bool? is_super_admin { get; set; }
+
+        //[Ignore]
+        public string password { get; set; }
     }
 }
