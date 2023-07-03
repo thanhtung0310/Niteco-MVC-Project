@@ -1,4 +1,9 @@
-﻿using niteco_mvc_project.Middlewares;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 
 namespace niteco_mvc_project
 {
@@ -12,10 +17,23 @@ namespace niteco_mvc_project
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-		protected void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory fac)
-		{
-            // implement middlewares
-            app.UseMiddleware<ErrorLoggingMiddleware>();
+        protected void Application_Error(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment() || env.IsStaging())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
         }
-	}
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            Server.ClearError();
+            Response.Redirect("/Home/Error");
+        }
+    }
 }

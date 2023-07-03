@@ -1,4 +1,6 @@
-﻿namespace niteco_mvc_project
+﻿using System.Web.Mvc;
+
+namespace niteco_mvc_project
 {
     public class FilterConfig
     {
