@@ -1,10 +1,13 @@
-﻿namespace niteco_mvc_project.Controllers;
+﻿using System.Web.Mvc;
 
-public class DefaultController : BaseController
+namespace niteco_mvc_project.Controllers
 {
-    // GET: Default
-    public ActionResult Index()
+    public class DefaultController : BaseController
     {
-        return View();
+        // GET: Default
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }

@@ -1,13 +1,15 @@
-﻿namespace niteco_mvc_project.Staffs;
+﻿using System;
 
-public class StaffDetailModel
+namespace niteco_mvc_project.Staffs
 {
-	public Guid Id { get; set; }
+    public class StaffDetailModel
+    {
+        public Guid Id { get; set; }
 
-	public string UserName { get; set; }
+        public string UserName { get; set; }
 
-	public string Name { get; set; }
+        public string Name { get; set; }
 
-	public bool IsSuperAdmin { get; set; }
+        public bool IsSuperAdmin { get; set; }
+    }
 }
-

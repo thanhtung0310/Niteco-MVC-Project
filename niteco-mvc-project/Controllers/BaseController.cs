@@ -1,6 +1,9 @@
-﻿namespace niteco_mvc_project.Controllers;
+﻿using System.Web.Mvc;
 
-[Authorize]
-public class BaseController : Controller
+namespace niteco_mvc_project.Controllers
 {
+    [Authorize]
+    public class BaseController : Controller
+    {
+    }
 }

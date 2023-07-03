@@ -1,9 +1,9 @@
-﻿namespace niteco_mvc_project.UserSession;
-
-public class LoginRequest
+﻿namespace niteco_mvc_project.UserSession
 {
-	public string UserName { get; set; }
+    public class LoginRequest
+    {
+        public string UserName { get; set; }
 
-	public string Password { get; set; }
+        public string Password { get; set; }
+    }
 }
-
